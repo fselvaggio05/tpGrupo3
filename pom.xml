@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ar.cac</groupId>
-	<artifactId>23650-tp-final</artifactId>
+	<artifactId>tpGrupo3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>23650-tp-final</name>
 	<description>TP Final para curso codo a codo Java Avanzado</description>
