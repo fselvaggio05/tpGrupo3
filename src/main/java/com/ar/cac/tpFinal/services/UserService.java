@@ -28,10 +28,14 @@ public class UserService {
     @Autowired
     private UserRepository userRep;
 
-    @Autowired
+   /* comentado 7/12 22:17
+   @Autowired
     private UserAuditoryRepository userAdRep;
+*/
 
-    //  private UserAuditoryService userAudService;
+    @Autowired
+    private UserAuditoryService userAudService;
+
 
     //esto esta comentado porque me parece que deberia intervenir primero el mapper
     //y con esos datos transformados, enviarlos al repository
@@ -104,42 +108,38 @@ public class UserService {
         if (userRep.existsById(id)) {
             User userToModify = userRep.findById(id).get();
 
-            UserAuditory userAuditory = new UserAuditory();
+
 
             // Logica del Patch
 
 
             if (dto.getEmail() != null) {
                 userToModify.setEmail(dto.getEmail());
-                userAuditory.setAuditoryEmail(dto.getEmail());
+
             }
 
             if (dto.getPass() != null) {
                 userToModify.setPass(dto.getPass());
-                userAuditory.setAuditoryPassword(dto.getPass());
+
             }
 
 
             if (dto.getAddress() != null) {
                 userToModify.setAddress(dto.getAddress());
-                userAuditory.setAuditoryAddress(dto.getAddress());
+
             }
 
 
             userToModify.setUpdated_at(LocalDateTime.now());
-
-            userAuditory.setCreatedAt(LocalDateTime.now());
-
             User userModified = userRep.save(userToModify);
 
-            userAdRep.save(userAuditory);
-
+            userAudService.updateAuditory(dto, userToModify);
 
             return UserMapper.userToDto(userModified);
         }
 
 
-        return dto;
+        return null;
     }
 }
 
