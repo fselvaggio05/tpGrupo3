@@ -38,6 +38,7 @@ public class TransferController {
 
     /*
     DELETE Y UPDATE SE OMITEN, YA QUE LAS TRANSFERENCIAS SOLO PODRAN SER CREADAS O CONSULTADAS.
+
     @PutMapping(value = "/{id}")
     public ResponseEntity<TransferDto> updateTransfer(@PathVariable Long id, @RequestBody TransferDto transfer){
         return ResponseEntity.status(HttpStatus.OK).body(service.updateTransfer(id, transfer));

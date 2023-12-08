@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class UserAuditory {
 
 
-    @Id
+   /* @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -30,6 +30,31 @@ public class UserAuditory {
     private String ModifiedValue;
 
     @ManyToOne
-    private User userAud;
+    private User userAud;*/
+
+   /* @ManyToOne
+    private Account accountAud;*/
+
+
+
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+
+        private LocalDateTime createdAt;
+
+        @Column(name = "Audit_contrasenia")
+        private String auditoryPassword;
+
+        @Column(name = "Audit_email")
+        private String auditoryEmail;
+
+        @Column(name = "Auditoria_direccion")
+        private String auditoryAddress;
+
+        @ManyToOne
+        private User userAud;
+
 
 }

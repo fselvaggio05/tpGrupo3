@@ -50,6 +50,7 @@ public class UserController {
    @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto user)
     {
+
       return ResponseEntity.status(HttpStatus.CREATED).body(service.createUser(user));
     }
 
@@ -64,19 +65,19 @@ public class UserController {
 
 
     //modificar ALGUNOS datos del usuario
-    @PatchMapping(value="/{id}")
+  /*  @PatchMapping(value="/{id}")
     public ResponseEntity<UserDto> updateUserParcial(@PathVariable Long id, @RequestBody UserDto user)
     {
         return ResponseEntity.status(HttpStatus.OK).body(service.updateUserPacial(id,user));
-    }
+    }*/
 
 
-    @DeleteMapping(value="{id}")
+    /*@DeleteMapping(value="{id}")
     public ResponseEntity<String> deleteUser(@PathVariable long id)
     {
         return ResponseEntity.status(HttpStatus.OK).body(service.deleteUser(id));
     }
-
+*/
 
 
 

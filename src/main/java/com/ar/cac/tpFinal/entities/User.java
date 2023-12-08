@@ -43,9 +43,11 @@ public class User {
 
    /* //Fecha de creacion y modificacion del usuario para mantener el estado
     private LocalDateTime created_at;
+    */
+
 
     private LocalDateTime updated_at;
-*/
+
     //lista de cuentas que tiene el usuario
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Account> accounts;
