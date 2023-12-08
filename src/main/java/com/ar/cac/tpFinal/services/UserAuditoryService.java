@@ -4,6 +4,7 @@ import com.ar.cac.tpFinal.entities.User;
 import com.ar.cac.tpFinal.entities.UserAuditory;
 import com.ar.cac.tpFinal.entities.dtos.UserAuditoryDto;
 import com.ar.cac.tpFinal.entities.dtos.UserDto;
+import com.ar.cac.tpFinal.mappers.TransferMapper;
 import com.ar.cac.tpFinal.mappers.UserAuditoryMapper;
 import com.ar.cac.tpFinal.mappers.UserMapper;
 import com.ar.cac.tpFinal.repositories.UserAuditoryRepository;
@@ -22,7 +23,7 @@ public class UserAuditoryService
 
 
 
-    public void updateAuditory(UserDto dto, User userRestore)
+    public void createAuditory(UserDto dto, User userToModify)
 {
     UserAuditory userAuditory = new UserAuditory();
 
@@ -30,7 +31,7 @@ public class UserAuditoryService
     userAuditory.setAuditoryPassword(dto.getPass());
     userAuditory.setAuditoryAddress(dto.getAddress());
     userAuditory.setAuditedAt(LocalDateTime.now());
-    userAuditory.setUserAud(userRestore);
+    userAuditory.setUsuarioActualizado(userToModify.getId());
     userAudRep.save(userAuditory);
 
 }
@@ -44,6 +45,7 @@ public class UserAuditoryService
         for (UserAuditory us : usersAudits) {
             UserAuditoryDto usAudDto = UserAuditoryMapper.userAuditoryToDto(us);
             usAudDtos.add(usAudDto);
+
         }
 
         return usAudDtos;

@@ -11,7 +11,8 @@ public class UserAuditoryMapper {
         usAudDto.setAuditoryPassword(userAud.getAuditoryPassword());
         usAudDto.setAuditoryEmail(userAud.getAuditoryEmail());
         usAudDto.setAuditoryAddress(userAud.getAuditoryAddress());
-        usAudDto.setUserAud(userAud.getUserAud());
+        usAudDto.setAuditedAt(userAud.getAuditedAt());
+        usAudDto.setUsuarioActualizado(userAud.getUsuarioActualizado());
         return usAudDto;
     }
 

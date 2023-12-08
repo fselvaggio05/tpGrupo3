@@ -14,7 +14,6 @@ public class AccountDto {
 
     private Long id;
 
-
     //TODO: crear la enumaracion de los tipos de cuentas
 
     //private AccountType type;

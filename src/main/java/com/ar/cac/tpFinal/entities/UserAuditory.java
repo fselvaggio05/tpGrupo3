@@ -36,8 +36,10 @@ public class UserAuditory {
         @Column(name = "Auditoria_direccion")
         private String auditoryAddress;
 
-        @ManyToOne
-        private User userAud;
+       /* @ManyToOne
+        private User userAud;*/
+
+        private Long usuarioActualizado;
 
 
 }

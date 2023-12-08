@@ -36,6 +36,12 @@ public class UserService {
     @Autowired
     private UserAuditoryService userAudService;
 
+    @Autowired
+    private AccountService accountService;
+
+
+
+
 
     //esto esta comentado porque me parece que deberia intervenir primero el mapper
     //y con esos datos transformados, enviarlos al repository
@@ -64,24 +70,17 @@ public class UserService {
     }
 
 
-    public UserDto createUser(UserDto user) //aca recibo un dto que tengo que transformar a user
+    public UserDto createUser(UserDto userDto) //aca recibo un dto que tengo que transformar a user
     {
 
-        User us = UserMapper.dtoToUser(user);
+        User us = UserMapper.dtoToUser(userDto);
         User usSaved = userRep.save(us); //le pido queme lo devuelva para transformarlo en dto
-        user = UserMapper.userToDto(usSaved);
-        user.setPass("*******"); //cuando devuelvo el objeto creado, lo muestro la contraseña y mando estrellitas
+        userDto = UserMapper.userToDto(usSaved);
+        userDto.setPass("*******"); //cuando devuelvo el objeto creado, lo muestro la contraseña y mando estrellitas
 
+        userAudService.createAuditory(userDto, usSaved);
 
-
-        /*//crear la entidad auditoria y setear la fecha de creacion a la clase
-        UserAuditory usAd = new UserAuditory();
-        usAd.setCreated_at(LocalDateTime.now());
-        usAd.setUserAud(usSaved);
-        userAdRep.save(usAd);
-*/
-
-        return user;
+        return userDto;
 
 
     }
@@ -89,6 +88,8 @@ public class UserService {
 
     //metodo para modificar los datos en forma TOTAL de un usuario
     public UserDto updateUserComplete(Long id, UserDto dto) {
+
+        Long id_User_aud;
 
       /*  if(userRep.existsById(id))
         {
@@ -133,7 +134,7 @@ public class UserService {
             userToModify.setUpdated_at(LocalDateTime.now());
             User userModified = userRep.save(userToModify);
 
-            userAudService.updateAuditory(dto, userToModify);
+            userAudService.createAuditory(dto, userToModify);
 
             return UserMapper.userToDto(userModified);
         }

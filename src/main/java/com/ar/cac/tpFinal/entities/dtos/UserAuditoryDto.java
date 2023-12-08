@@ -22,6 +22,6 @@ public class UserAuditoryDto {
     private String auditoryPassword;
     private String auditoryEmail;
     private String auditoryAddress;
-    private User userAud;
+    private Long usuarioActualizado;
 
 }
