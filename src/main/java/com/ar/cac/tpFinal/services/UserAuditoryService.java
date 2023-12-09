@@ -1,5 +1,6 @@
 package com.ar.cac.tpFinal.services;
 
+import com.ar.cac.tpFinal.entities.Operation;
 import com.ar.cac.tpFinal.entities.User;
 import com.ar.cac.tpFinal.entities.UserAuditory;
 import com.ar.cac.tpFinal.entities.dtos.UserAuditoryDto;
@@ -23,19 +24,36 @@ public class UserAuditoryService
 
 
 
-    public void createAuditory(UserDto dto, User userToModify)
-{
+    public void createUserAuditory(UserDto dto, User userToModify)
+    {
     UserAuditory userAuditory = new UserAuditory();
 
     userAuditory.setAuditoryEmail(dto.getEmail());
     userAuditory.setAuditoryPassword(dto.getPass());
     userAuditory.setAuditoryAddress(dto.getAddress());
     userAuditory.setAuditedAt(LocalDateTime.now());
-    userAuditory.setUsuarioActualizado(userToModify.getId());
+    userAuditory.setUserAud(userToModify);
+    userAuditory.setOperation(Operation.CREATED);
     userAudRep.save(userAuditory);
 
 }
 
+
+
+
+    public void updateUserAuditory(UserDto dto, User userToModify)
+    {
+        UserAuditory userAuditory = new UserAuditory();
+
+        userAuditory.setAuditoryEmail(dto.getEmail());
+        userAuditory.setAuditoryPassword(dto.getPass());
+        userAuditory.setAuditoryAddress(dto.getAddress());
+        userAuditory.setAuditedAt(LocalDateTime.now());
+        userAuditory.setUserAud(userToModify);
+        userAuditory.setOperation(Operation.UPDATED);
+        userAudRep.save(userAuditory);
+
+    }
 
     public List<UserAuditoryDto> getAll() {
 
@@ -51,4 +69,19 @@ public class UserAuditoryService
         return usAudDtos;
 
     }
+
+    public UserAuditoryDto getUserAuditoryById(Long id) {
+
+        UserAuditory us = userAudRep.findById(id).get();
+        return UserAuditoryMapper.userAuditoryToDto(us);
+    }
+
+
+    /*public List<UserAuditoryDto> getById(Long id) {
+
+        List<UserAuditory> userAuditoryList = userAudRep.findById();
+    }*/
+
+
+
 }

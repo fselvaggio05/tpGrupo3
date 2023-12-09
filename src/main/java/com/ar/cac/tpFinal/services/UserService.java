@@ -78,7 +78,7 @@ public class UserService {
         userDto = UserMapper.userToDto(usSaved);
         userDto.setPass("*******"); //cuando devuelvo el objeto creado, lo muestro la contraseña y mando estrellitas
 
-        userAudService.createAuditory(userDto, usSaved);
+        userAudService.createUserAuditory(userDto, usSaved);
 
         return userDto;
 
@@ -91,27 +91,12 @@ public class UserService {
 
         Long id_User_aud;
 
-      /*  if(userRep.existsById(id))
-        {
-            //transformo el dto recibido a user
-            User us = UserMapper.dtoToUser(dto);
-            User userUpdated = userRep.save(us);
-            dto = UserMapper.userToDto(userUpdated);
-
-
-            return dto;
-
-        }
-
-        return null;*/
-
-
         if (userRep.existsById(id)) {
             User userToModify = userRep.findById(id).get();
 
 
 
-            // Logica del Patch
+            // Logica del patch
 
 
             if (dto.getEmail() != null) {
@@ -134,7 +119,7 @@ public class UserService {
             userToModify.setUpdated_at(LocalDateTime.now());
             User userModified = userRep.save(userToModify);
 
-            userAudService.createAuditory(dto, userToModify);
+            userAudService.updateUserAuditory(dto, userToModify);
 
             return UserMapper.userToDto(userModified);
         }

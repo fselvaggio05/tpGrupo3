@@ -52,10 +52,10 @@ public class User {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Account> accounts;
 
-/*
+
     @OneToMany(mappedBy = "userAud", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserAuditory> user;
-*/
+
 
 
 
