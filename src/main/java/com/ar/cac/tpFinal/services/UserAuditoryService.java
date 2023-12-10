@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserAuditoryService
@@ -70,10 +71,17 @@ public class UserAuditoryService
 
     }
 
-    public UserAuditoryDto getUserAuditoryById(Long id) {
+   public List<UserAuditoryDto> getUserAuditoryById(Long id) {
 
-        UserAuditory us = userAudRep.findById(id).get();
-        return UserAuditoryMapper.userAuditoryToDto(us);
+        List<UserAuditory> usAuds = userAudRep.findByUserAudId(id);
+        List<UserAuditoryDto> usDtos = new ArrayList<UserAuditoryDto>();
+
+        for (UserAuditory usAud : usAuds)
+        {
+
+            usDtos.add(UserAuditoryMapper.userAuditoryToDto(usAud));
+        }
+        return usDtos;
     }
 
 

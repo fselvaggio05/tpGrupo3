@@ -33,8 +33,8 @@ public class UserAuditoryController {
         return ResponseEntity.status(HttpStatus.OK).body(userAudServ.getById(id));
     }*/
 
-    @GetMapping(value = "{id}")
-    public ResponseEntity<UserAuditoryDto> getUserById(@PathVariable Long id) {
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<List<UserAuditoryDto>> getUserById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(userAudServ.getUserAuditoryById(id));
     }
 }
