@@ -1,6 +1,5 @@
-package com.ar.cac.tpFinal.entities;
+package com.ar.cac.tpFinal.entities.dtos;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,21 +12,12 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cuenta_auditoria")
-@Entity
-public class AccountAuditory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+public class AccountAuditoryDto {
     private Long id;
-    @Column(name = "fecha_auditoria")
-
     private LocalDateTime auditedAt;
-
     private String alias;
-
     private BigDecimal amount;
-
     private Long accountAudited;
 
 
