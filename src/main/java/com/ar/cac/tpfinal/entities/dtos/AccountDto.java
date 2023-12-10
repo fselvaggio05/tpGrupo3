@@ -19,9 +19,7 @@ public class AccountDto {
     private AccountType type;
 
     private String cbu;
-
     private String alias;
-
     private BigDecimal amount;
 
 }
