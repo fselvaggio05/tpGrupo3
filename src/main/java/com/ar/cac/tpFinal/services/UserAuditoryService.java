@@ -85,10 +85,6 @@ public class UserAuditoryService
     }
 
 
-    /*public List<UserAuditoryDto> getById(Long id) {
-
-        List<UserAuditory> userAuditoryList = userAudRep.findById();
-    }*/
 
 
 

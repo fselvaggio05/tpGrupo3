@@ -35,11 +35,6 @@ public class Account {
     @ManyToOne
     private User owner;
 
-    /* redundante por la referencia a la cuenta
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
 
-    private List<Transfer> trans;
-
-     */
 
 }

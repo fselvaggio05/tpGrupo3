@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserAuditoryRepository extends JpaRepository<UserAuditory, Long>/*, UserCriteriaFindById <UserAuditory>*/
+public interface UserAuditoryRepository extends JpaRepository<UserAuditory, Long>
 {
-
 
    List<UserAuditory> findByUserAudId(Long id);
 

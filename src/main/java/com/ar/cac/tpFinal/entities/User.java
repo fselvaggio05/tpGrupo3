@@ -41,10 +41,6 @@ public class User {
     @Column (name ="fecha_cumpleanios")
     private Date brithdate;
 
-   /* //Fecha de creacion y modificacion del usuario para mantener el estado
-    private LocalDateTime created_at;
-    */
-
 
     private LocalDateTime updated_at;
 
@@ -55,6 +51,8 @@ public class User {
 
     @OneToMany(mappedBy = "userAud", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserAuditory> user;
+
+
 
 
 

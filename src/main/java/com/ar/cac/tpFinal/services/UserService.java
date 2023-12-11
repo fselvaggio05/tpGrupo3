@@ -41,8 +41,6 @@ public class UserService {
 
 
 
-
-
     //esto esta comentado porque me parece que deberia intervenir primero el mapper
     //y con esos datos transformados, enviarlos al repository
 
@@ -76,9 +74,8 @@ public class UserService {
         User us = UserMapper.dtoToUser(userDto);
         User usSaved = userRep.save(us); //le pido queme lo devuelva para transformarlo en dto
         userDto = UserMapper.userToDto(usSaved);
-        userDto.setPass("*******"); //cuando devuelvo el objeto creado, lo muestro la contraseña y mando estrellitas
-
         userAudService.createUserAuditory(userDto, usSaved);
+        userDto.setPass("*******"); //cuando devuelvo el objeto creado, lo muestro la contraseña y mando estrellitas
 
         return userDto;
 
