@@ -9,11 +9,14 @@ public class AccountAuditoryMapper {
     public static AccountAuditoryDto accountAuditoryToDto(AccountAuditory accountAud) {
         AccountAuditoryDto acAudDto = new AccountAuditoryDto();
 
-        acAudDto.setId(accountAud.getId());
+
         acAudDto.setAlias(accountAud.getAlias());
-        acAudDto.setAmount(accountAud.getAmount());
+        acAudDto.setResidue(accountAud.getResidue());
         acAudDto.setAuditedAt(accountAud.getAuditedAt());
         acAudDto.setAccountAudited(accountAud.getAccountAudited());
+        acAudDto.setDestiny_account(accountAud.getDestiny_account());
+        acAudDto.setAmount_transaction(accountAud.getAmount_transaction());
+
         return acAudDto;
     }
 }

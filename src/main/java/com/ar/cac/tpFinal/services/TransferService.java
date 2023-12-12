@@ -7,6 +7,7 @@ import com.ar.cac.tpFinal.entities.Transfer;
 import com.ar.cac.tpFinal.entities.dtos.TransferDto;
 import com.ar.cac.tpFinal.repositories.AccountRepository;
 import com.ar.cac.tpFinal.repositories.TransferRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,15 +21,21 @@ import java.util.stream.Collectors;
 @Service
 public class TransferService {
 
-    private final TransferRepository repository;
+    @Autowired
+    private TransferRepository repository;
 
     //esta dependencia se agrega para pedir los datos de las cuentas a la capa del repo de las mismas
-    private final AccountRepository accountRepository;
+    @Autowired
+    private AccountRepository accountRepository;
 
-    public TransferService(TransferRepository repository, AccountRepository accountRepository){
+    @Autowired
+    private AccountAuditoryService accAudServ;
+
+
+ /*  public TransferService(TransferRepository repository, AccountRepository accountRepository){
         this.repository = repository;
         this.accountRepository = accountRepository;
-    }
+    }*/
 
     public List<TransferDto> getTransfers(){
         List<Transfer> transfers = repository.findAll();
@@ -88,6 +95,8 @@ public class TransferService {
 
 
                 repository.save(transfer);
+                accAudServ.createAccountAuditory(dto, ac1);
+                accAudServ.createAccountAuditory(dto, ac2);
 
 
                 //devolver el TransferDto

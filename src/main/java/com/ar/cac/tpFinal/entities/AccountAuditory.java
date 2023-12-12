@@ -26,9 +26,14 @@ public class AccountAuditory {
 
     private String alias;
 
-    private BigDecimal amount;
+    @Column(name ="saldo")
+    private BigDecimal residue; //saldo de la cuenta
+
+    private BigDecimal amount_transaction;
 
     private Long accountAudited;
+
+    private Long destiny_account;
 
 
 }

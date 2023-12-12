@@ -1,5 +1,9 @@
 package com.ar.cac.tpFinal.entities.dtos;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,11 +18,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 
 public class AccountAuditoryDto {
-    private Long id;
+
+
     private LocalDateTime auditedAt;
     private String alias;
-    private BigDecimal amount;
+    private BigDecimal residue; //saldo de la cuenta
     private Long accountAudited;
+    private BigDecimal amount_transaction;
+    private Long destiny_account;
+
 
 
 }

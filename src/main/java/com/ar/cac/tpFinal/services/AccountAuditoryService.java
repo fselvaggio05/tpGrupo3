@@ -4,10 +4,7 @@ import com.ar.cac.tpFinal.entities.Account;
 import com.ar.cac.tpFinal.entities.AccountAuditory;
 import com.ar.cac.tpFinal.entities.User;
 import com.ar.cac.tpFinal.entities.UserAuditory;
-import com.ar.cac.tpFinal.entities.dtos.AccountAuditoryDto;
-import com.ar.cac.tpFinal.entities.dtos.AccountDto;
-import com.ar.cac.tpFinal.entities.dtos.UserAuditoryDto;
-import com.ar.cac.tpFinal.entities.dtos.UserDto;
+import com.ar.cac.tpFinal.entities.dtos.*;
 import com.ar.cac.tpFinal.mappers.AccountAuditoryMapper;
 import com.ar.cac.tpFinal.mappers.UserAuditoryMapper;
 import com.ar.cac.tpFinal.repositories.AccountAuditoryRepository;
@@ -22,17 +19,18 @@ import java.util.List;
 public class AccountAuditoryService {
 @Autowired
     public AccountAuditoryRepository AccountAudRep;
-    public void createAccountAuditory(AccountDto dto, Account accountToModify)
+    public void createAccountAuditory(TransferDto dto, Account accountToModify)
     {
-        AccountAuditory accountAuditory = new AccountAuditory();
 
-       accountAuditory.setId(dto.getId());
-       accountAuditory.setAuditedAt(LocalDateTime.now());
-
-       accountAuditory.setAlias(dto.getAlias());
-       accountAuditory.setAmount(dto.getAmount());
-       accountAuditory.setAccountAudited(accountToModify.getId());
-        AccountAudRep.save(accountAuditory);
+            AccountAuditory accountAuditory = new AccountAuditory();
+          //accountAuditory.setId(dto.getId()); esto lo crea automaticamente
+            accountAuditory.setAuditedAt(LocalDateTime.now());
+            accountAuditory.setAlias(accountToModify.getAlias());
+            accountAuditory.setResidue(accountToModify.getAmount());
+            accountAuditory.setAmount_transaction(dto.getAmount());
+            accountAuditory.setAccountAudited(accountToModify.getId());
+            accountAuditory.setDestiny_account(dto.getTarget());
+            AccountAudRep.save(accountAuditory);
 
     }
     public List<AccountAuditoryDto> getAccounts() {

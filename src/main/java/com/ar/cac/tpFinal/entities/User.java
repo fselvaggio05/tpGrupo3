@@ -44,10 +44,12 @@ public class User {
 
     private LocalDateTime updated_at;
 
+
     //lista de cuentas que tiene el usuario
+/*
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Account> accounts;
-
+*/
 
     @OneToMany(mappedBy = "userAud", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserAuditory> user;

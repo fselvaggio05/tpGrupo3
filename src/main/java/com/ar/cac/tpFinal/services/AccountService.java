@@ -23,7 +23,7 @@ public class AccountService {
     private AccountRepository repository;
 
     @Autowired
-    private AccountAuditoryService userAudService;
+    private AccountAuditoryService accAudService;
 
 
     public List<AccountDto> getAll() {
@@ -61,14 +61,20 @@ public class AccountService {
         if(repository.existsById(id))
         {
             Account acUpdated = repository.findById(id).get();
+
+            if (dto.getAlias() != null) {
+                acUpdated.setAlias(dto.getAlias());
+
+            }
+
             Account acModify = repository.save(acUpdated);
-            Account accountToModify = repository.findById(id).get();
+
+            //accAudService.createAccountAuditory();
 
 
+        //    Account userModified = repository.save(accountToModify);
 
-            Account userModified = repository.save(accountToModify);
-
-            userAudService.createAccountAuditory(dto, accountToModify);
+         // userAudService.createAccountAuditory(dto, accountToModify);
 
             return AccountMapper.accountToDto(acModify);
 
