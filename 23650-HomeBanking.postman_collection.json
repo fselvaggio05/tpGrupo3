@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "f6442bde-2fa2-40e1-baca-fe85c6ad0cce",
+		"name": "23649-HomeBanking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "6987519",
+		"_collection_link": "https://martian-star-383742.postman.co/workspace/Academia-Node~9c7cb669-cdf5-4a55-a97f-6b096e3c99e9/collection/6987519-f6442bde-2fa2-40e1-baca-fe85c6ad0cce?action=share&source=collection_link&creator=6987519"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "CREATE USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jorge\",\n    \"email\": \"jorge@mail.com\",\n    \"surname\": \"Brouce\",\n    \"dni\": \"9000000\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "cristian",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "gadea",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "GET USER BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/users/30"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/users/4"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/users/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "GET ACCOUNTS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/accounts"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE ACCOUNT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"alias\": \"mapas.quesos\",\n    \"cbu\": \"1011223344556677889910\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/accounts"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ACCOUNT BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/accounts/2"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE ACCOUNT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:8080/api/accounts/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ACCOUNT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/accounts/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transfers",
+			"item": [
+				{
+					"name": "GET TRANSFERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/transfers"
+					},
+					"response": []
+				},
+				{
+					"name": "GET TRANSFERS BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/transfers/1"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE TRANSFER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/transfers"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE TRANSFER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/transfers/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE TRANSFER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/transfers/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
